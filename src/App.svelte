@@ -1,45 +1,33 @@
 <script lang="ts">
-  import svelteLogo from './assets/svelte.svg'
-  import Counter from './lib/Counter.svelte'
+    import { onMount } from "svelte";
+
+
+    let perClick = 1
+    let memeCoins = 0
+
+    onMount(() => {
+        document.getElementById("")
+    })
+
 </script>
 
 <main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer"> 
-      <img src="/vite.svg" class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer"> 
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
-
-  <div class="card">
-    <Counter />
-  </div>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
-
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
+    <h1 id="title">meme clicker</h1>
+    <div id="container">
+        <b-x>
+            <h1>Click the meme</h1>
+            <h2>you have {memeCoins} memecoins</h2>
+            <h3>Each click gives: 1 memecoin</h3> 
+            <img id="meme" width="50" height="50" src="https://i1.sndcdn.com/avatars-qrMzS7F9pCkmuP6Q-KbCIKA-t240x240.jpg" alt="click"/>
+        </b-x>
+        <b-x>
+            <h1>Buy memes</h1>
+            <upgrade>
+                <h1>Doge Meme</h1>
+                <h2>+1 Click</h2>
+                <img class="upgrade" width="50" height="50" src="https://www.exodus.com/img/news/content/2022/11/flat-550x550-075-f.u1.jpg" alt="click"/>
+            </upgrade>
+            
+        </b-x>
+    </div>
 </main>
-
-<style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
-</style>
