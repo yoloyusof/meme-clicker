@@ -77,7 +77,7 @@ upgrade {
 	width: -moz-available;
 	width: -webkit-fill-available;
 	max-width: 660px;
-	background: linear-gradient(#0e0e0e, #080808);
+	background: linear-gradient(#0e0e0e, #202020);
 	border: 1px solid #3e3d3d;
 	border-radius: 8px;
 	outline: 2px solid #000;
