@@ -10,18 +10,19 @@
   }
 
   let planetMappings = {
-    "Earth": 1,
-    "Ohio": 10
-  }
+    Earth: 1,
+    Ohio: 10,
+    MCU: 50,
+  };
 
   let memes = [
-    "https://yt3.googleusercontent.com/ytc/AMLnZu-UjGeg336Ky8RoBC2hlRZ4vnlkVW3lTr0H0DOpVg=s900-c-k-c0x00ffffff-no-rj",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUFKYcXuM4onp47mQIIb5AgwVG6EXUWuZ6HGw7-7s&s",
     "https://i.chzbgr.com/full/9655605248/h3A4E1569/person-come-my-lady-come-come-my-lady-domino-sugar",
     "https://i.ytimg.com/vi/gz0CYLoE6_o/maxresdefault.jpg",
     "https://i1.sndcdn.com/avatars-qrMzS7F9pCkmuP6Q-KbCIKA-t240x240.jpg",
     "https://i.ytimg.com/vi/zRomlhpMeHs/mqdefault.jpg",
-    "https://www.exodus.com/img/news/content/2022/11/flat-550x550-075-f.u1.jpg"
-  ]
+    "https://www.exodus.com/img/news/content/2022/11/flat-550x550-075-f.u1.jpg",
+  ];
 
   let perClick = desearialized.perClick;
   let memeCoins = desearialized.memeCoins;
@@ -31,15 +32,17 @@
     let memeElement = document.getElementById("meme") as HTMLImageElement;
     document.getElementById("meme").onclick = () => {
       let perClickByPlanet;
-    
+
       if (planet == "Earth") {
-        perClickByPlanet = perClick
-      } else if (planet = "Ohio") {
-        perClickByPlanet = perClick * planetMappings.Ohio
+        perClickByPlanet = perClick;
+      } else if (planet == "Ohio") {
+        perClickByPlanet = perClick * planetMappings.Ohio;
+      } else if (planet == "MCU") {
+        perClickByPlanet = perClick * planetMappings.MCU;
       }
 
       memeCoins += perClickByPlanet;
-      memeElement.src = memes[Math.floor(Math.random()*memes.length)]
+      memeElement.src = memes[Math.floor(Math.random() * memes.length)];
     };
 
     document.getElementById("buy-doge").onclick = () => {
@@ -55,21 +58,28 @@
     };
 
     document.getElementById("travel-ohio").onclick = () => {
-      if (planet == "ohio") return;
+      if (planet == "Ohio") return;
       if (memeCoins <= 9000) return;
       planet = "Ohio";
 
       memeCoins = 0;
       perClick = 1;
-
-    }
+    };
 
     document.getElementById("buy-genzkid").onclick = () => {
       if (memeCoins <= 50) return;
       memeCoins -= 50;
       perClick += 10;
+    };
 
-    }
+    document.getElementById("travel-mcu").onclick = () => {
+      if (planet == "MCU") return;
+      if (memeCoins <= 500000) return;
+      planet = "MCU";
+
+      memeCoins = 0;
+      perClick = 1;
+    };
 
     window.addEventListener("unload", () => {
       localStorage.setItem(
@@ -77,7 +87,7 @@
         JSON.stringify({
           memeCoins: memeCoins,
           perClick: perClick,
-          planet: planet
+          planet: planet,
         })
       );
     });
@@ -91,7 +101,7 @@
       <h1>Click the meme</h1>
       <h2>
         you have <h3 style="color: rgb(99, 239, 99);">{memeCoins}</h3>
-         memecoins
+        memecoins
       </h2>
       <br />
       <h3>Each click gives: {perClick} memecoin</h3>
@@ -160,6 +170,20 @@
         />
         <br />
         <button id="travel-ohio">Travel</button>
+      </upgrade>
+      <upgrade>
+        <h1>MCU</h1>
+        <h2>*50 Clicks</h2>
+        <h3 class="upgrade-text">Have atleast 500000 memecoins</h3>
+        <img
+          class="upgrade"
+          width="50"
+          height="50"
+          src="https://i.ytimg.com/vi/TWB31WFomz4/maxresdefault.jpg"
+          alt="click"
+        />
+        <br />
+        <button id="travel-mcu">Travel</button>
       </upgrade>
     </b-x>
   </div>
