@@ -16,10 +16,7 @@
   };
 
   let memes = [
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUFKYcXuM4onp47mQIIb5AgwVG6EXUWuZ6HGw7-7s&s",
-    "https://i.chzbgr.com/full/9655605248/h3A4E1569/person-come-my-lady-come-come-my-lady-domino-sugar",
     "https://i.ytimg.com/vi/gz0CYLoE6_o/maxresdefault.jpg",
-    "https://i1.sndcdn.com/avatars-qrMzS7F9pCkmuP6Q-KbCIKA-t240x240.jpg",
     "https://i.ytimg.com/vi/zRomlhpMeHs/mqdefault.jpg",
     "https://www.exodus.com/img/news/content/2022/11/flat-550x550-075-f.u1.jpg",
   ];
@@ -30,6 +27,7 @@
 
   onMount(() => {
     let memeElement = document.getElementById("meme") as HTMLImageElement;
+    memeElement.src = memes[Math.floor(Math.random() * memes.length)];
     document.getElementById("meme").onclick = () => {
       let perClickByPlanet;
 
@@ -42,7 +40,7 @@
       }
 
       memeCoins += perClickByPlanet;
-      memeElement.src = memes[Math.floor(Math.random() * memes.length)];
+      
     };
 
     document.getElementById("buy-doge").onclick = () => {
@@ -98,7 +96,7 @@
   <img src="Meme clicker banner.png" alt="banner" id="title" />
   <div id="container">
     <b-x>
-      <h1>Click the meme</h1>
+      <h1 id="titleText">Click the meme</h1>
       <h2>
         you have <h3 style="color: rgb(99, 239, 99);">{memeCoins}</h3>
         memecoins
